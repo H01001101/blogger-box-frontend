@@ -1,0 +1,8 @@
+<div class="post-list">
+  <div *ngFor="let post of posts" class="post-item">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <small>{{ post.createdDate | date }}</small>
+    <small>Category: {{ post.category.name }}</small>
+  </div>
+</div>

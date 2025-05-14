@@ -1,0 +1,20 @@
+.navbar {
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-brand i {
+    margin-right: 10px;
+}
+
+.btn-outline-success {
+    margin-left: auto;
+}
+
+.btn-outline-success i {
+    margin-right: 5px;
+}
