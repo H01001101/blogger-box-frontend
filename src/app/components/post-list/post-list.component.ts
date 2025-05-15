@@ -6,6 +6,7 @@ import { Post } from '../../data/post';
     selector: 'app-post-list',
     templateUrl: './post-list.component.html',
     styleUrls: ['./post-list.component.css'],
+    standalone: false
 })
 export class PostListComponent implements OnInit {
     posts: Post[] = [];

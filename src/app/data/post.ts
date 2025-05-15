@@ -7,3 +7,20 @@ export interface Post {
     createdDate: Date;
     category: Category;
 }
+
+export const POSTS: Post[] = [
+    {
+        id: '1',
+        title: 'My first amazing title',
+        content: 'My first amazing content post',
+        createdDate: new Date('2024-05-01'),
+        category: { id: '1', name: 'Adoption' }
+    },
+    {
+        id: '2',
+        title: 'The Transformative Power of Foster Care Adoption',
+        content: 'Foster care adoption provides permanent homes for children...',
+        createdDate: new Date('2024-05-02'),
+        category: { id: '2', name: 'Adoption' }
+    },
+];

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { PostListComponent } from './post-list/post-list.component';
-import { PostListItemComponent } from './post-list-item/post-list-item.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 const routes: Routes = [
-  { path: '', component: PostListComponent},
-  { path: '', component: PostListItemComponent},
+    { path: 'home', component: HomeComponent },
+    { path: 'add-post', component: AddPostComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
