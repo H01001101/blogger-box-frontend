@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { POSTS, Post } from '../data/post';
+import { Post } from '../data/post';
+
+export interface PostCreateDTO {
+  title: string;
+  content: string;
+  createdDate: string;
+  categoryTitle: string;
+}
 
 @Injectable()
 export class PostService {
@@ -10,11 +17,10 @@ export class PostService {
     constructor(private http: HttpClient) { }
 
     getPosts(): Observable<Post[]> {
-        const posts = of(POSTS);
-        return posts;
+        return this.http.get<Post[]>(this.apiUrl);
     }
 
-    create(post: Post): Observable<Post> {
+    create(post: PostCreateDTO): Observable<Post> {
         return this.http.post<Post>(this.apiUrl, post);
     }
 }

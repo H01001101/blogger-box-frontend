@@ -14,8 +14,13 @@ export class HomeComponent implements OnInit {
     constructor(private postService: PostService) { }
 
     ngOnInit(): void {
-        this.postService.getPosts().subscribe(posts => {
-            this.posts = posts;
-        });
-    }
+            this.postService.getPosts().subscribe(posts => {
+                // Trier les posts du plus récent au plus ancien
+                this.posts = posts.sort((a, b) => {
+                    const dateA = new Date(a.createdDate).getTime();
+                    const dateB = new Date(b.createdDate).getTime();
+                    return dateB - dateA; // ordre décroissant
+                });
+            });
+          }
 }

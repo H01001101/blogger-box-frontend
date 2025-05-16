@@ -14,13 +14,13 @@ export const POSTS: Post[] = [
         title: 'My first amazing title',
         content: 'My first amazing content post',
         createdDate: new Date('2024-05-01'),
-        category: { id: '1', name: 'Adoption' }
+        category: { id: '1', title: 'Adoption' }
     },
     {
         id: '2',
         title: 'The Transformative Power of Foster Care Adoption',
         content: 'Foster care adoption provides permanent homes for children...',
         createdDate: new Date('2024-05-02'),
-        category: { id: '2', name: 'Adoption' }
+        category: { id: '2', title: 'Adoption' }
     },
 ];

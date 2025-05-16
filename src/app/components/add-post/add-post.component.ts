@@ -31,6 +31,7 @@ export class AddPostComponent implements OnInit {
 
     ngOnInit(): void {
         this.categoryService.getAll().subscribe(categories => {
+            console.log('Catégories récupérées:', categories);
             this.categories = categories;
         });
     }
@@ -45,7 +46,39 @@ export class AddPostComponent implements OnInit {
             return;
         }
 
-        this.postService.create(this.postForm.value).subscribe(() => {
+        const formValue = this.postForm.value;
+
+        const selectedCategory = this.categories.find(cat => cat.id === formValue.category);
+
+        if (!selectedCategory) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Invalid category selected!',
+            });
+            return;
+        }
+
+        const now = new Date();
+        const createdDate = now.getFullYear() +
+          '-' + String(now.getMonth() + 1).padStart(2, '0') +
+          '-' + String(now.getDate()).padStart(2, '0') +
+          'T' + String(now.getHours()).padStart(2, '0') +
+          ':' + String(now.getMinutes()).padStart(2, '0') +
+          ':' + String(now.getSeconds()).padStart(2, '0');
+
+        console.log(createdDate);
+
+        const payload = {
+            title: formValue.title,
+            content: formValue.content,
+            createdDate: createdDate,
+            categoryTitle: selectedCategory.title,
+        };
+
+        console.log("Données envoyées au backend:", payload);
+
+        this.postService.create(payload).subscribe(() => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
@@ -54,4 +87,5 @@ export class AddPostComponent implements OnInit {
             this.router.navigate(['/home']);
         });
     }
+
 }
